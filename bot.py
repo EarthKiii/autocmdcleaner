@@ -9,6 +9,4 @@ async def on_message(message):
     if message.channel.id in autorizedchannel :
         await message.delete()
 
-client.run('Nzc4Njc1ODMxNzY5MjY4MjM0.X7VcYQ.mj2CTkSJiY6mite7xLSVQkf73v0')        
-
-
+client.run(os.environ['CLEANER'])        
