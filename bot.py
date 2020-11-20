@@ -10,4 +10,4 @@ async def on_message(message):
     if message.channel.id == 735505544957394984 :
         await message.delete()
 
-client.run(os.environ['CLEANER'])        
+bot.run(os.environ['CLEANER'])        
