@@ -1,10 +1,10 @@
 import discord, os
-client = discord.Client()
+bot = commands.Bot(command_prefix='>')
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'{client.user.name} has connected to Discord!')
-@client.event
+    print(f'{bot.user.name} has connected to Discord!')
+@bot.event
 async def on_message(message):
     if message.channel.id == 735505544957394984 :
         await message.delete()
