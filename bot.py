@@ -121,7 +121,7 @@ async def poll(ctx, *args):
         await message.add_reaction('✅')
         await message.add_reaction('❎')
 
-@bot.command
+@bot.command(brief="Show github source code", help="Bot by Jønªs#6910")
 async def github(ctx):
     embed=discord.Embed()
     embed.add_field(name="Github ", value="source code : \nhttps://github.com/Voidoffi/autocmdcleaner", inline=False)
