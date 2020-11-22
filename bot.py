@@ -4,7 +4,6 @@ intents = discord.Intents.default()
 intents.members = True
 bot = commands.Bot(command_prefix='.',intents=intents)
 defrole = ""
-cmdnames = []
 cmdchannels = []
 
 @bot.event
@@ -46,55 +45,34 @@ async def on_reaction_remove(reaction, member):
     
 @bot.command(brief="Add a cmd/bot channels to the list.", help='Here "<arg>" is the name of the channel you want to add to the list \n For exemple, to add channel nammed "chat" to the list, the command would be ".setcmd chat"')
 async def setcmd(ctx, arg):
-    global cmdchannels, cmdnames
-    if type(arg) is int:
-        if arg in cmdnames :
-            await ctx.send(arg+' is already a cmd/bot channel !')
-        else :
-            try :
-                cmdchannels.append(arg)
-                cmdnames.append(arg)
-                await ctx.send(arg+' is now defined as a cmd/bot channel !')
-            except AttributeError:
-                await ctx.send(arg+' is not a valid channel')        
+    global cmdchannels
+    if arg in cmdchannels :
+        await ctx.send(arg+' is already a cmd/bot channel !')
     else :
-        if arg in cmdnames :
-            await ctx.send(arg+' is already a cmd/bot channel !')
-        else :
-            try :
-                cmdchannels.append(discord.utils.get(ctx.guild.channels, name=arg).id)
-                cmdnames.append(arg)
-                await ctx.send(arg+' is now defined as a cmd/bot channel !')
-            except AttributeError:
-                await ctx.send(arg+' is not a valid channel')
+        try :
+            cmdchannels.append(arg)
+            await ctx.send(arg+' is now defined as a cmd/bot channel !')
+        except AttributeError:
+            await ctx.send(arg+' is not a valid channel')        
             
 @bot.command(brief="Remove a cmd/bot channels from the list.", help='Here "<arg>" is the name of the channel you want to remove from the list \n For exemple, remove a channel nammed "chat" from the list, the command would be ".delcmd chat"')
 async def delcmd(ctx, arg):
-    global cmdchannels, cmdnames
-    if type(arg) is int:
-        if arg in cmdnames :
-            cmdchannels.remove(arg)
-            cmdnames.remove(arg)
-            await ctx.send(arg+' is not a cmd/bot channel anymore (removed from list)!')        
-        else :
-            await ctx.send(arg+' is not a cmd/bot channel or is not a valid channel!')
+    global cmdchannels
+    if arg in cmdchannels :
+        cmdchannels.remove(arg)
+        await ctx.send(arg+' is not a cmd/bot channel anymore (removed from list)!')        
     else :
-        if arg in cmdnames :
-            cmdchannels.remove(discord.utils.get(ctx.guild.channels, name=arg).id)
-            cmdnames.remove(arg)
-            await ctx.send(arg+' is not a cmd/bot channel anymore (removed from list)!')        
-        else :
-            await ctx.send(arg+' is not a cmd/bot channel or is not a valid channel!')
+        await ctx.send(arg+' is not a cmd/bot channel or is not a valid channel!')
 
 @bot.command(brief="Show all cmd/bot channels.", help="This command don't need args, it will show all cmd/bot channels in an embed if invoked")
 async def listcmd(ctx):
-    global cmdnames
-    if not cmdnames :
+    global cmdchannels
+    if not cmdchannels :
         channelnames = "There is no channel defined as a cmd/bot channel !"
     else :
         channelnames = ""
-    for i in range(0,len(cmdnames)):        
-        channelnames += cmdnames[i]+'\n'
+    for i in range(0,len(cmdchannels)):        
+        channelnames += cmdchannels[i]+'\n'
     embed=discord.Embed()
     embed.add_field(name="CMD/BOT channel list :", value=channelnames, inline=False)
     await ctx.send(embed=embed)
