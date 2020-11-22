@@ -125,30 +125,4 @@ async def poll(ctx, *args):
         await message.add_reaction('❎')
 
 
-bot.run('Nzc5MDE4NTYzODMzOTU0MzE0.X7abkw.ajNJijIxzbG1mq9wkYSYk3Ekfzs')
-
-    #emojis = ["✔", "❎"]
-    #adminBug = bot.get_channel(778677112122376195)
-    #embed=discord.Embed(title="etr", description="ert")
-    #message = await adminBug.send(embed=embed)
-    #for emoji in emojis:
-        #await message.add_reaction(emoji)
-
-#@bot.event
-#async def on_reaction_add(reaction, member):
-    #if member.bot:
-        #return
-    #if reaction.emoji == "✔":
-        #await member.add_roles(discord.utils.get(member.guild.roles, name="believer"))
-    #elif reaction.emoji == "❎":
-        #await member.add_roles(discord.utils.get(member.guild.roles, name="not believer"))
-    #elif reaction.emoji == "emoji 3":
-        #print('3')
-    #else:
-        #return
-
-        
-    
-      
-
-
+bot.run(os.environ['CLEANER'])
