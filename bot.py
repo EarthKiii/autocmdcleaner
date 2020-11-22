@@ -50,7 +50,7 @@ async def setcmd(ctx, arg):
         await ctx.send(arg+' is already a cmd/bot channel !')
     else :
         try :
-            cmdchannels.append(arg)
+            cmdchannels.append(int(arg))
             await ctx.send(arg+' is now defined as a cmd/bot channel !')
         except AttributeError:
             await ctx.send(arg+' is not a valid channel')        
@@ -59,7 +59,7 @@ async def setcmd(ctx, arg):
 async def delcmd(ctx, arg):
     global cmdchannels
     if arg in cmdchannels :
-        cmdchannels.remove(arg)
+        cmdchannels.remove(int(arg))
         await ctx.send(arg+' is not a cmd/bot channel anymore (removed from list)!')        
     else :
         await ctx.send(arg+' is not a cmd/bot channel or is not a valid channel!')
