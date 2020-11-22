@@ -46,7 +46,7 @@ async def on_reaction_remove(reaction, member):
 @bot.command(brief="Add a cmd/bot channels to the list.", help='Here "<arg>" is the id of the channel you want to add to the list \n For exemple, to add channel with the id "99999" to the list, the command would be ".setcmd 999999"')
 async def setcmd(ctx, arg):
     global cmdchannels
-    if arg in cmdchannels :
+    if int(arg) in cmdchannels :
         await ctx.send(arg+' is already a cmd/bot channel !')
     else :
         try :
@@ -58,7 +58,7 @@ async def setcmd(ctx, arg):
 @bot.command(brief="Remove a cmd/bot channels from the list.", help='Here "<arg>" is the id of the channel you want to remove from the list \n For exemple, remove a channel with the id "999999" from the list, the command would be ".delcmd 999999"')
 async def delcmd(ctx, arg):
     global cmdchannels
-    if arg in cmdchannels :
+    if int(arg) in cmdchannels :
         cmdchannels.remove(int(arg))
         await ctx.send(arg+' is not a cmd/bot channel anymore (removed from list)!')        
     else :
