@@ -72,7 +72,7 @@ async def listcmd(ctx):
     else :
         channelnames = ""
     for i in range(0,len(cmdchannels)):        
-        channelnames += cmdchannels[i]+'\n'
+        channelnames += str(cmdchannels[i])+'\n'
     embed=discord.Embed()
     embed.add_field(name="CMD/BOT channel list :", value=channelnames, inline=False)
     await ctx.send(embed=embed)
