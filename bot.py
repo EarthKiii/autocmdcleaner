@@ -125,4 +125,4 @@ async def poll(ctx, *args):
         await message.add_reaction('❎')
 
 
-bot.run(os.environ['CLEANER'])
+bot.run(os.environ['MULTITASK'])
