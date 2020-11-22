@@ -121,5 +121,10 @@ async def poll(ctx, *args):
         await message.add_reaction('✅')
         await message.add_reaction('❎')
 
-
+@bot.command
+async def github(ctx):
+    embed=discord.Embed()
+    embed.add_field(name="Github ", value="source code : \nhttps://github.com/Voidoffi/autocmdcleaner", inline=False)
+    embed.set_footer(text="by Jønªs #6910")
+    await ctx.send(embed=embed)
 bot.run(os.environ['MULTITASK'])
